@@ -4,11 +4,14 @@
   hosts: webhosts
   tasks:
   - name: Install httpd
-    yum: name=httpd
+    yum: name=httpd state=present
   - name: Enable httppd
+    # Here arcuments to module "service" are name, enable and state
     service: name=httpd enabled=true state=stopped
   - name: Create Readme File
     copy:
+      # Here arguments to module "copy" are "content, dest, etc"
+      # So, we can see, arguments can be given using "=" or ":" but when we use ":", they are on separate lines with indentation of 2 spaces.
       content: "Welcome to httpd on webhosts!\n"
       dest: /var/log/myhttpd.README
       force: no
