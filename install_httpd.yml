@@ -8,8 +8,8 @@
     service: name=httpd enabled=true state=stopped
   - name: Create Readme File
     copy:
-      content: "Welcome Parjeet Singh to httpd on webhosts!\n"
-      dest: /var/log/prajeet.README
+      content: "Welcome to httpd on webhosts!\n"
+      dest: /var/log/myhttpd.README
       force: no
       mode: 0444
 ...
