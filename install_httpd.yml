@@ -2,6 +2,7 @@
 # This playbook used 3 modules i.e., yum, service and copy
 - name: Deploy httpd 
   hosts: webhosts
+  # We can see, tasks is in form of Arrays. It has 3 arrays here, all start with a "-".
   tasks:
   - name: Install httpd
     yum: name=httpd state=present
