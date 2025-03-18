@@ -5,7 +5,7 @@
   # We can see, tasks is in form of Arrays. It has 3 arrays here, all start with a "-".
   tasks:
   - name: Install httpd
-    yum: name=httpd state=present
+    package: name=httpd state=present
   - name: Enable httppd
     # Here arcuments to module "service" are name, enable and state
     service: name=httpd enabled=true state=stopped
