@@ -1,0 +1,15 @@
+---
+- name: Create user oracle
+  hosts: dbhosts
+  vars:
+    username: oracle
+  tasks:
+    - name: Create user
+      user: 
+        name: "{{ username }}"
+        state: present 
+        shell: /bin/bash
+    - name: User is created.
+      debug:
+        msg: User {{ username }} is created.
+... 

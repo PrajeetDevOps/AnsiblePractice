@@ -1,0 +1,14 @@
+---
+- name: Remove user oracle
+  hosts: dbhosts
+  vars: 
+    username: oracle
+  tasks:
+    - name: Remove user
+      user:
+        name: "{{username}}" 
+        state: absent
+    - name: User is removed
+      debug:
+        msg: User {{username}} is removed.
+... 
