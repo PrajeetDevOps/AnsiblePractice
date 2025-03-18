@@ -1,0 +1,13 @@
+---
+- name: Remove httpd from server
+  hosts: webhosts
+  tasks:
+    - name: Remove file
+      file:
+        path: /var/log/myhttpd.README
+        state: absent
+    - name: Stop and Disable HTTPD
+      service: name=httpd enabled=false state=stopped
+    - name: Uninstall HTTPD
+      package: name=httpd state=absent
+...
