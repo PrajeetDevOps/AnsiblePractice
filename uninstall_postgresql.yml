@@ -1,0 +1,10 @@
+---
+- name: Remove PostgreSQL
+  hosts: dbhosts
+  tasks: 
+  - name: Uninstall PostgreSQL
+    yum: name=postgresql15-server state=absent
+  - name: Remove PostgreSQL data directory
+    file:
+      path: /var/lib/pgsql
+      state: absent

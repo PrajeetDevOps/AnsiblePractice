@@ -1,0 +1,14 @@
+[apphosts]
+ansible1
+ansible2
+controlpanel
+
+[dbhosts]
+ansible1
+
+[webhosts]
+ansible2
+
+[nodes:children]
+dbhosts
+webhosts

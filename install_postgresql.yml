@@ -1,0 +1,11 @@
+---
+- name: Deploy PostgreSQL
+  hosts: dbhosts
+  tasks:
+    - name: Install PostgreSQL-server
+      yum: name=postgresql15-server state=present
+    - name: Initialize PostgreSQL database
+      command: /usr/bin/postgresql-setup --initdb
+    - name: Start Postgresql
+      service: name=postgresql enabled=true state=started
+...

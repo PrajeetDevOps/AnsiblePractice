@@ -1,0 +1,11 @@
+---
+- name: check hostname
+  hosts: dbhosts 
+  tasks:
+    - name: check hostname
+      shell: hostname -i; hostname -A
+      register: output
+
+    - name: Check Hostname Output
+      debug: 
+        var: output.stdout

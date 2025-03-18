@@ -1,0 +1,15 @@
+---
+- name: Deploy httpd 
+  hosts: webhosts
+  tasks:
+  - name: Install httpd
+    yum: name=httpd
+  - name: Enable httppd
+    service: name=httpd enabled=true state=stopped
+  - name: Create Readme File
+    copy:
+      content: "Welcome Parjeet Singh to httpd on webhosts!\n"
+      dest: /var/log/prajeet.README
+      force: no
+      mode: 0444
+...
