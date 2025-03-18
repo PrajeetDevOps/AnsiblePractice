@@ -1,4 +1,5 @@
 ---
+# This playbook used 3 modules i.e., yum, service and copy
 - name: Deploy httpd 
   hosts: webhosts
   tasks:
