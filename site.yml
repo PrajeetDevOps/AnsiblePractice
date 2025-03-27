@@ -1,0 +1,11 @@
+---
+- name: Configure web services
+  hosts: webhosts
+  tasks: 
+    - name: Install webpackage {{ web_package }} package
+      debug:
+        msg: Installing {{ web_package }} on {{ ansible_facts.default_ipv4.address  }}
+    - name: Start webservice
+      debug:
+        msg: Starting {{ web_service }} on {{ ansible_facts.default_ipv4.address }}
+...

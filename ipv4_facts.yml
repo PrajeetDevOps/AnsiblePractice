@@ -1,0 +1,8 @@
+---
+- name: Get IP Address of machines
+  hosts: nodes
+  tasks:
+    - name: Show IP address
+      debug:
+        msg: IP is {{ ansible_facts.default_ipv4.address }}
+...
