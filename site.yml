@@ -1,11 +1,7 @@
 ---
-- name: Configure web services
-  hosts: webhosts
+- hosts: webhosts
+# If we want we can stop fact gathering by "gather_facts: no"
+# gather_facts: no
   tasks: 
-    - name: Install webpackage {{ web_package }} package
-      debug:
-        msg: Installing {{ web_package }} on {{ ansible_facts.default_ipv4.address  }}
-    - name: Start webservice
-      debug:
-        msg: Starting {{ web_service }} on {{ ansible_facts.default_ipv4.address }}
-...
+    - name: incluse webhosts tasks
+      include_tasks: tasks/webhosts.yml

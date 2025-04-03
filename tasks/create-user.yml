@@ -2,7 +2,7 @@
 - name: Create a user
   hosts: webhosts
   vars_files:
-    - lisa-secret.yml
+    - peter-secret.yml
   tasks:
     - name: Create user...
       user:
