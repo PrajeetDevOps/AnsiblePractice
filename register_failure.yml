@@ -1,0 +1,13 @@
+---
+- name: Demonstrating failed_when
+  hosts: nodes
+  tasks: 
+    - name: Run a script
+      command: echo hello world
+      ignore_errors: yes
+      # Here, my_command_result is the variable, which will store all ouptput in it, then in failed_when, we used my_command_result.stdout.
+      register: my_command_result
+      failed_when: "'world' in my_command_result.stdout"
+    - name: Let's see if we get to this task
+      debug:
+        msg: Failed - "{{ my_command_result.failed }}". Result Code - "{{ my_command_result.rc }}"

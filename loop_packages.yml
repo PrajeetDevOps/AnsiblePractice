@@ -1,0 +1,14 @@
+---
+- name: Test tool
+  hosts: webhosts
+  vars:
+    my_packages:
+      - nginx
+      - screen
+  tasks:
+    - name: Installing packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ my_packages }}"
+...
