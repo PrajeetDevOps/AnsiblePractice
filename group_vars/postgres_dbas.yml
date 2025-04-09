@@ -1,0 +1,6 @@
+postgres_users:
+  - { username: prajeet, password: pass1, superuser: yes, login: yes }
+  - { username: earle, password: pass2, superuser: yes, login: yes }
+  - { username: aurel, password: pass3, superuser: yes, login: yes }
+  - { username: vlad, password: pass4, superuser: yes, login: yes }
+  - { username: andrey, password: pass5, superuser: no, login: yes }

@@ -1,0 +1,11 @@
+postgres_hba_extra_entries:
+- {type: host, database: all, user: prajeet, address: 127.0.0.1/32 , method: md5}
+- {type: host, database: all, user: prajeet, address: 172.31.30.129 , method: md5}
+- {type: host, database: all, user: earle, address: 127.0.0.1/32, method: md5}
+- {type: host, database: all, user: earle, address: 172.31.30.129 , method: md5}
+- {type: host, database: all, user: vlad, address: 127.0.0.1/32, method: md5}
+- {type: host, database: all, user: vlad, address: 172.31.30.129 , method: md5}
+- {type: host, database: all, user: aurel, address: 127.0.0.1/32, method: md5}
+- {type: host, database: all, user: aurel, address: 172.31.30.129 , method: md5}
+- {type: host, database: all, user: andrey, address: 127.0.0.1/32, method: md5}
+- {type: host, database: all, user: andrey, address: 172.31.30.129 , method: md5}

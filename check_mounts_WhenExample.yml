@@ -1,0 +1,9 @@
+---
+- name: Check mount points
+  gather_facts: true
+  hosts: nodes
+  tasks:
+  - name: Check mounts
+    debug:
+      msg: "{{ ansible_mounts }}"
+...

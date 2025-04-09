@@ -1,0 +1,21 @@
+---
+- name: Create Postgres DB users
+  hosts: dbhosts
+  become: true
+  vars_files:
+    - group_vars/postgres_dbas.yml
+  tasks:
+    - name: Check python3-psycopg2
+      ansible.builtin.package:
+        name: python3-psycopg2
+        state: present
+    - name: Create DB users
+      community.postgresql.postgresql_user:
+        name: "{{ item.username }}"
+        password: "{{ item.password }}"
+        role_attr_flags: SUPERUSER,CREATEDB
+        state: present
+      loop: "{{ postgres_users }}"
+      become: true
+      become_user: postgres
+...

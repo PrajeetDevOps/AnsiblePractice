@@ -1,0 +1,14 @@
+---
+- name: Example for When. Check day time.
+  gather_facts: true
+  hosts: nodes
+  tasks:
+    - name: Check day
+      debug:
+        msg: Today is {{ ansible_date_time.date }}, {{ ansible_date_time.weekday }}, {{ ansible_date_time.day }}
+      when: '"08" in ansible_date_time.day'
+    - name: Check day again
+      debug:
+        msg: Today is {{ ansible_date_time.day }}
+      when: '"09" is in ansible_date_time.day'
+...

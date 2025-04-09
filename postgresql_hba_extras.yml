@@ -1,0 +1,28 @@
+---
+- name: Create extra PostgreSQL entries in pg_hba.conf
+  hosts: dbhosts
+  become: true
+  vars_files:
+    - group_vars/postgres_hba_extras.yml
+  tasks:
+    - name: Check python3-psycopg2
+      ansible.builtin.package:
+        name: python3-psycopg2
+        state: present
+    - name: Allow md5 connections for db users/roles
+      community.postgresql.postgresql_pg_hba:
+        dest: "/var/lib/pgsql/data/pg_hba.conf"
+        contype: "{{ item.type }}"
+        databases: "{{ item.database }}"
+        users: "{{ item.user }}"
+        address: "{{ item.address }}"
+        method: md5
+        create: true
+      loop: "{{ postgres_hba_extra_entries }}"
+      become: true
+      become_user: postgres
+    - name: Reload PostgreSQL service
+      ansible.builtin.service:
+        name: postgresql
+        state: reloaded
+...

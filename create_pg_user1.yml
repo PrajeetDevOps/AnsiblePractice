@@ -1,0 +1,23 @@
+---
+- name: Create Postgres DB user
+  hosts: dbhosts
+  become: true
+  vars:
+    db_user: my_user
+    db_password: mypassword
+  tasks:
+    - name: Check message
+      debug:
+        msg: User is "{{ db_user }}" and password is "{{ db_password }}"
+    - name: Check python3-psycopg2
+      ansible.builtin.package:
+        name: python3-psycopg2
+        state: present
+    - name: Create DB user
+      community.postgresql.postgresql_user:
+        state: present
+        name: "{{ db_user }}"
+        password: "{{ db_password }}"
+      become: true
+      become_user: postgres
+...

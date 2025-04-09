@@ -1,0 +1,15 @@
+---
+- name: Drop postgresql database user
+  hosts: dbhosts
+  vars_files:
+    - group_vars/postgres_dbas.yml
+  become: true
+  tasks:
+    - name: Drop user
+      community.postgresql.postgresql_user:
+        name: "{{ item.username }}"
+        state: absent
+      loop: "{{ postgres_users }}"
+      become: true
+      become_user: postgres
+...
